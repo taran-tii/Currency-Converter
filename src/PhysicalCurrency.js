@@ -1,14 +1,3 @@
-// https://stackoverflow.com/questions/6555182/remove-all-special-characters-except-space-from-a-string-using-javascript
-// https://stackoverflow.com/questions/32946793/react-native-textinput-that-only-accepts-numeric-characters
-// https://stackoverflow.com/questions/29685421/hide-keyboard-in-react-native
-// https://stackoverflow.com/questions/45406675/flatlist-onclick-navigate-to-next-screen
-// https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/App.js
-// https://www.npmjs.com/package/react-native-splash-screen
-// https://stackoverflow.com/questions/20839874/difference-between-two-dates-in-minute-hours-javascript
-// https://medium.com/@yangzhoupostbox/an-example-of-realm-js-in-react-native-c86fa94f088c
-// https://realm.io/docs/javascript/latest/
-// https://facebook.github.io/react-native/docs/signed-apk-android
-
 import React, { Component } from "react";
 import {
   Platform,
@@ -78,8 +67,8 @@ export default class PhysicalCurrency extends Component<Props> {
   constructor(props) {
     super(props);
 
-    iPhoneXHeight = Dimensions.get('window').height;
-    console.log( "IPhoneX : " + iPhoneXHeight);
+    iPhoneXHeight = Dimensions.get("window").height;
+    console.log("IPhoneX : " + iPhoneXHeight);
 
     this.state = {
       FromCurrency: "USD",
@@ -95,7 +84,7 @@ export default class PhysicalCurrency extends Component<Props> {
 
     fromTextPress = false;
     isReverse = false;
-    currentOS = Platform.OS
+    currentOS = Platform.OS;
 
     Realm.open({ schema: [currencyConverter] })
       .then(realm => {
@@ -369,8 +358,7 @@ export default class PhysicalCurrency extends Component<Props> {
             <Text style={styles.title}>Currency Converter</Text>
           </View>
 
-       <ScrollView style={styles.scrollView}>
-
+          <ScrollView style={styles.scrollView}>
             <View>
               <View style={styles.currencyType}>
                 <TouchableOpacity
@@ -429,7 +417,7 @@ export default class PhysicalCurrency extends Component<Props> {
                 </Text>
               )}
             </View>
-         </ScrollView>
+          </ScrollView>
 
           <View style={styles.reverseIcon}>
             <TouchableOpacity
@@ -449,7 +437,7 @@ export default class PhysicalCurrency extends Component<Props> {
           </View>
 
           {this.state.isIntroShow ? (
-            Platform.OS === "ios" ?
+            Platform.OS === "ios" ? (
               <View
                 style={{
                   height: "100%",
@@ -458,247 +446,251 @@ export default class PhysicalCurrency extends Component<Props> {
                   position: "absolute"
                 }}
               >
-              {Dimensions.get('window').height >= 812 ?
-                <Image
-                  style={{ width: "100%", height: "100%" }}
-                  source={require("../images/intro_iphone_x.png")}
-                />
-              :
-                <Image
-                  style={{ width: "100%", height: "100%" }}
-                  source={require("../images/intro_iPhone.png")}
-                />
-             }
-
-              </View>:
-            <View
-              style={{
-                height: "100%",
-                width: "100%",
-                backgroundColor: "rgba(0, 0, 0, 0.6)",
-                zIndex: 1,
-                position: "absolute"
-              }}
-            >
+                {Dimensions.get("window").height >= 812 ? (
+                  <Image
+                    style={{ width: "100%", height: "100%" }}
+                    source={require("../images/intro_iphone_x.png")}
+                  />
+                ) : (
+                  <Image
+                    style={{ width: "100%", height: "100%" }}
+                    source={require("../images/intro_iPhone.png")}
+                  />
+                )}
+              </View>
+            ) : (
               <View
                 style={{
-                  marginTop: Platform.OS === "ios" ? "25%" : "13%",
-                  marginStart: "5%",
-                  width: Platform.OS === "ios" ? "100%" : 0,
+                  height: "100%",
+                  width: "100%",
+                  backgroundColor: "rgba(0, 0, 0, 0.6)",
+                  zIndex: 1,
+                  position: "absolute"
                 }}
               >
-                <Text
+                <View
                   style={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 17,
-                    height: Platform.OS === "ios" ? 25 : 0
+                    marginTop: Platform.OS === "ios" ? "25%" : "13%",
+                    marginStart: "5%",
+                    width: Platform.OS === "ios" ? "100%" : 0
                   }}
                 >
-                  Tap here to choose the currency.
-                </Text>
-                <View style={{ flexDirection: "row", marginStart: "40%" }}>
-                  <Image
+                  <Text
                     style={{
-                      width: 30,
-                      height: 30,
-                      transform: [{ rotate: "140deg" }]
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 17,
+                      height: Platform.OS === "ios" ? 25 : 0
                     }}
-                    source={require("../images/arrow.png")}
-                  />
+                  >
+                    Tap here to choose the currency.
+                  </Text>
+                  <View style={{ flexDirection: "row", marginStart: "40%" }}>
+                    <Image
+                      style={{
+                        width: 30,
+                        height: 30,
+                        transform: [{ rotate: "140deg" }]
+                      }}
+                      source={require("../images/arrow.png")}
+                    />
+                    <Image
+                      style={{
+                        width: 30,
+                        height: 30,
+                        marginStart: 10,
+                        transform: [{ rotate: "40deg" }]
+                      }}
+                      source={require("../images/arrow.png")}
+                    />
+                  </View>
+                </View>
+
+                <View
+                  style={{
+                    height: 100,
+                    marginTop: "10%",
+                    marginStart: "20%"
+                  }}
+                >
+                  <Text
+                    style={{
+                      width: Platform.OS === "ios" ? 240 : 180,
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 16
+                    }}
+                  >
+                    Fill in the amount you want to convert.
+                  </Text>
+
                   <Image
                     style={{
                       width: 30,
                       height: 30,
-                      marginStart: 10,
-                      transform: [{ rotate: "40deg" }]
+                      marginStart: Platform.OS === "ios" ? "15%" : 8,
+                      transform: [{ rotate: "150deg" }],
+                      marginTop: Platform.OS === "ios" ? "-2%" : "0%"
                     }}
                     source={require("../images/arrow.png")}
                   />
                 </View>
-              </View>
-
-              <View
-                style={{
-                  height: 100,
-                  marginTop: "10%",
-                  marginStart: "20%"
-                }}
-              >
-                <Text
-                  style={{
-                    width: Platform.OS === "ios" ? 240 : 180,
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 16,
-                  }}
-                >
-                  Fill in the amount you want to convert.
-                </Text>
-
-                <Image
-                  style={{
-                    width: 30,
-                    height: 30,
-                    marginStart: Platform.OS === "ios" ? '15%' : 8,
-                    transform: [{ rotate: "150deg" }],
-                    marginTop: Platform.OS === "ios" ? '-2%' : '0%'
-                  }}
-                  source={require("../images/arrow.png")}
-                />
-              </View>
-
-              <View
-                style={{
-                  marginTop: Platform.OS === "ios" ? "-1.5%" : "2%",
-                  marginStart: "32%"
-                }}
-              >
-                <Text
-                  style={{
-                    width: 180,
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 17
-                  }}
-                >
-                  Get your results here.
-                </Text>
-
-                <Image
-                  style={{
-                    width: 30,
-                    height: 30,
-                    marginStart: "25%",
-                    transform: [{ rotate: "130deg" }]
-                  }}
-                  source={require("../images/arrow.png")}
-                />
-              </View>
-
-              <View style={{
-              justifyContent: 'space-between',
-              marginVertical: Dimensions.get('window').height - "10%"/2,
-              flexGrow: 1}}
-              >
-              <View
-                style={{
-                  marginTop: Platform.OS === "ios" ? "1%" : "5%",
-                  flexDirection: "row",
-                  marginStart: Platform.OS === "ios" ? "7%" : "10%",
-                }}
-              >
-                <Text
-                  style={{
-                    width: 280,
-                    color: "rgba(0, 0, 0, 0.0)",
-                    textAlign: "center",
-                    fontSize: 17,
-                  }}
-                >
-                  To interchange between the currencies.
-                </Text>
 
                 <View
                   style={{
-                    width: 30,
-                    height: 30,
-                    marginStart: -90,
-                    marginTop: 17,
-                    transform: [{ rotate: "45deg" }]
-                  }}
-
-                />
-              </View>
-
-              <View
-                style={{
-                  marginStart: Platform.OS === "ios" ? "5%" : "1%",
-                  marginBottom: Platform.OS === "ios" ? 10 : 0
-                }}
-              >
-                <Text
-                  style={{
-                    width: 250,
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 15,
-                    marginStart: Platform.OS === "ios" ? "5%" : "0%"
+                    marginTop: Platform.OS === "ios" ? "-1.5%" : "2%",
+                    marginStart: "32%"
                   }}
                 >
-                  Swap here for fiat or crypto currency modes.
-                </Text>
-
-                <View
-                  style={{
-                    flexDirection: "row"
-                  }}
-                >
-                  <Image
+                  <Text
                     style={{
-                      width: 30,
-                      height: 30,
-                      marginStart: "12%",
-                      marginTop: -15,
-                      transform: [{ rotate: "90deg" }]
+                      width: 180,
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 17
                     }}
-                    source={require("../images/arrow.png")}
-                  />
+                  >
+                    Get your results here.
+                  </Text>
 
                   <Image
                     style={{
                       width: 30,
                       height: 30,
-                      marginStart: "38%",
-                      marginTop: -15,
-                      transform: [{ rotate: "48deg" }]
+                      marginStart: "25%",
+                      transform: [{ rotate: "130deg" }]
                     }}
                     source={require("../images/arrow.png")}
                   />
                 </View>
-              </View>
-              </View>
 
-              <View style={{
-                zIndex: 1,
-                position: "absolute",
-                marginTop: Platform.OS === "ios" ? (Dimensions.get('window').height - 220) : (Dimensions.get('window').height - 210),
-                marginStart: Platform.OS === "ios" ? "15%" : "10%",
-                justifyContent: 'space-between'
-                }}
-              >
-              <View
-                style={{
-                  marginTop: Platform.OS === "ios" ? "-1%" : "4%",
-                  flexDirection: "row",
-                  marginStart: "19%"
-                }}
-              >
-                <Text
+                <View
                   style={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 17,
+                    justifyContent: "space-between",
+                    marginVertical: Dimensions.get("window").height - "10%" / 2,
+                    flexGrow: 1
                   }}
                 >
-                  To interchange between the currencies.
-                </Text>
+                  <View
+                    style={{
+                      marginTop: Platform.OS === "ios" ? "1%" : "5%",
+                      flexDirection: "row",
+                      marginStart: Platform.OS === "ios" ? "7%" : "10%"
+                    }}
+                  >
+                    <Text
+                      style={{
+                        width: 280,
+                        color: "rgba(0, 0, 0, 0.0)",
+                        textAlign: "center",
+                        fontSize: 17
+                      }}
+                    >
+                      To interchange between the currencies.
+                    </Text>
 
-                <Image
+                    <View
+                      style={{
+                        width: 30,
+                        height: 30,
+                        marginStart: -90,
+                        marginTop: 17,
+                        transform: [{ rotate: "45deg" }]
+                      }}
+                    />
+                  </View>
+
+                  <View
+                    style={{
+                      marginStart: Platform.OS === "ios" ? "5%" : "1%",
+                      marginBottom: Platform.OS === "ios" ? 10 : 0
+                    }}
+                  >
+                    <Text
+                      style={{
+                        width: 250,
+                        color: "white",
+                        textAlign: "center",
+                        fontSize: 15,
+                        marginStart: Platform.OS === "ios" ? "5%" : "0%"
+                      }}
+                    >
+                      Swap here for fiat or crypto currency modes.
+                    </Text>
+
+                    <View
+                      style={{
+                        flexDirection: "row"
+                      }}
+                    >
+                      <Image
+                        style={{
+                          width: 30,
+                          height: 30,
+                          marginStart: "12%",
+                          marginTop: -15,
+                          transform: [{ rotate: "90deg" }]
+                        }}
+                        source={require("../images/arrow.png")}
+                      />
+
+                      <Image
+                        style={{
+                          width: 30,
+                          height: 30,
+                          marginStart: "38%",
+                          marginTop: -15,
+                          transform: [{ rotate: "48deg" }]
+                        }}
+                        source={require("../images/arrow.png")}
+                      />
+                    </View>
+                  </View>
+                </View>
+
+                <View
                   style={{
-                    width: 30,
-                    height: 30,
-                    marginStart: Platform.OS === "ios" ? -44 : -55,
-                    marginTop: 24,
-                    transform: [{ rotate: "45deg" }]
+                    zIndex: 1,
+                    position: "absolute",
+                    marginTop:
+                      Platform.OS === "ios"
+                        ? Dimensions.get("window").height - 220
+                        : Dimensions.get("window").height - 210,
+                    marginStart: Platform.OS === "ios" ? "15%" : "10%",
+                    justifyContent: "space-between"
                   }}
-                  source={require("../images/arrow.png")}
-                />
-              </View>
-              </View>
+                >
+                  <View
+                    style={{
+                      marginTop: Platform.OS === "ios" ? "-1%" : "4%",
+                      flexDirection: "row",
+                      marginStart: "19%"
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "white",
+                        textAlign: "center",
+                        fontSize: 17
+                      }}
+                    >
+                      To interchange between the currencies.
+                    </Text>
 
-
-            </View>
+                    <Image
+                      style={{
+                        width: 30,
+                        height: 30,
+                        marginStart: Platform.OS === "ios" ? -44 : -55,
+                        marginTop: 24,
+                        transform: [{ rotate: "45deg" }]
+                      }}
+                      source={require("../images/arrow.png")}
+                    />
+                  </View>
+                </View>
+              </View>
+            )
           ) : null}
         </View>
       </TouchableWithoutFeedback>
@@ -747,17 +739,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF"
   },
   titleContainer: {
-    height: Platform.OS === "ios" ? Dimensions.get('window').height >= 812 ? 89 : 64 : 60,
+    height:
+      Platform.OS === "ios"
+        ? Dimensions.get("window").height >= 812
+          ? 89
+          : 64
+        : 60,
     justifyContent: "center",
     alignItems: Platform.OS === "ios" ? "center" : "flex-start",
     paddingLeft: Platform.OS === "ios" ? 0 : 15,
-    paddingTop: Platform.OS === "ios" ? Dimensions.get('window').height >= 812 ? 39 : 19 : 0,
+    paddingTop:
+      Platform.OS === "ios"
+        ? Dimensions.get("window").height >= 812
+          ? 39
+          : 19
+        : 0,
     backgroundColor: "#eb4444"
   },
   title: {
     fontSize: Platform.OS === "ios" ? 17 : 22,
     color: "#ffffff",
-    fontWeight: Platform.OS === "ios" ? 'normal' : 'normal'
+    fontWeight: Platform.OS === "ios" ? "normal" : "normal"
   },
   currencyType: {
     flexDirection: "row",

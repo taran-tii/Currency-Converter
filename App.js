@@ -6,12 +6,6 @@
  * @flow
  */
 
-// https://www.npmjs.com/package/react-navigation
-// https://codeburst.io/ricky-figures-it-out-simple-react-native-tabnavigator-using-react-navigation-592945a3b211
-// https://reactnativecode.com/create-picker-spinner-using-dynamic-json-data/
-// https://stackoverflow.com/questions/51360029/react-navigation-createbottomtabnavigator-not-working/51360818
-// https://github.com/davekedar/React-Navigation-V2-Authflow/blob/master/App.js
-
 import React, { Component } from "react";
 import { View, Dimensions } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
@@ -39,9 +33,9 @@ const MainNavigator = createBottomTabNavigator(
         fontSize: 20,
         padding: 12
       },
-      iconStyle: { width: 30, height: 30 },
+      iconStyle: { width: 30, height: 30 }
     },
-    animationEnabled: false,
+    animationEnabled: false
   }
 );
 
