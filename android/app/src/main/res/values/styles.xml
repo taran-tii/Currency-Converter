@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+         <!-- Customize your theme here. -->
+         <item name="colorPrimaryDark">@color/dark_red</item>
+         <item name="android:windowIsTranslucent">true</item>
+     </style>
+
+     <style name="SplashTheme" parent="AppTheme">
+         <!-- <item name="android:windowBackground">@drawable/background_splash</item>
+         <item name="android:statusBarColor">@color/grey</item> -->
+         <item name="colorPrimaryDark">@color/white</item>
+     </style>
+
+</resources>
